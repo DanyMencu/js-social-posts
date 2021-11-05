@@ -4,7 +4,7 @@
 
 //*3.Prendendo come riferimento il layout di esempio presente nell’html, stampiamo i post del nostro feed.
 
-//1.
+//1./2.
 const posts = [
     {
         autorName: "Gigi D'Alessio",
@@ -47,3 +47,14 @@ const posts = [
         likesCounter: '1',
     },
 ];
+
+//3.
+
+//*Ref
+const postsContainer = document.getElementById('container');
+const profileImg = document.querySelector('.profile-pic');
+const postAutor = document.querySelector('.post-meta__author');
+const postDate = document.querySelector('.post-meta__time');
+const postText = document.querySelector('.post__text');
+const postImg = document.querySelector('.post__image');
+const postLikes = document.getElementById('like-counter-1');
