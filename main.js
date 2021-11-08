@@ -7,40 +7,50 @@
 //1./2.
 const posts = [
     {
-        autorName: "Gigi D'Alessio",
-        profileImg: 'https://picsum.photos/180',
+        autor: {
+            name: "Gigi D'Alessio",
+            avatar: 'https://picsum.photos/180',
+        },
         date: '2 mesi fa',
         postText: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
         imgPost: 'https://picsum.photos/500/350',
         likesCounter: '125',
     },
     {
-        autorName: "Nino D'Angelo",
-        profileImg: 'https://picsum.photos/190',
+        autor: {
+            name: "Nino D'Angelo",
+            avatar: 'https://picsum.photos/190',
+        },
         date: '4 mesi fa',
         postText: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
         imgPost: 'https://picsum.photos/600/400',
         likesCounter: '52',
     },
     {
-        autorName: 'Nico Pandetta',
-        profileImg: 'https://picsum.photos/210',
+        autor: {
+            name: 'Nico Pandetta',
+            avatar: 'https://picsum.photos/210',
+        },
         date: '3 mesi fa',
         postText: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
         imgPost: 'https://picsum.photos/550/350',
         likesCounter: '36',
     },
     {
-        autorName: 'LIBERATO',
-        profileImg: 'https://picsum.photos/200',
+        autor: {
+            name: 'LIBERATO',
+            avatar: 'https://picsum.photos/200',
+        },
         date: '8 mesi fa',
         postText: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
         imgPost: 'https://picsum.photos/600/300',
         likesCounter: '75',
     },
     {
-        autorName: 'Peppe Sokx',
-        profileImg: 'https://picsum.photos/220',
+        autor: {
+            name: 'Peppe Sokx',
+            avatar: 'https://picsum.photos/220',
+        },
         date: '125 mesi fa',
         postText: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
         imgPost: 'https://picsum.photos/600/350',
@@ -52,12 +62,6 @@ const posts = [
 
 //*Ref
 const postsContainer = document.getElementById('container');
-const profileImg = document.querySelector('.profile-pic');
-const postAutor = document.querySelector('.post-meta__author');
-const postDate = document.querySelector('.post-meta__time');
-const postText = document.querySelector('.post__text');
-const postImg = document.querySelector('.post__image');
-const postLikes = document.getElementById('like-counter-1');
 
 createLayout(posts, postsContainer);
 
@@ -75,23 +79,26 @@ function createLayout (array, indexRef) {
     for (let i = 0; i < array.length; i++) {
         const arrayElement = array[i];
 
+        //Destrocturing
+        const {autor, date, postText, imgPost, likesCounter} = arrayElement;
+
         //Layout selected
         indexRef.innerHTML += `
         <div class="post">
             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
-                        <img class="profile-pic" src="${arrayElement.profileImg}" alt="${arrayElement.autorName}">                    
+                        <img class="profile-pic" src="${autor.avatar}" alt="${autor.name}">                    
                     </div>
                     <div class="post-meta__data">
-                        <div class="post-meta__author">${arrayElement.autorName}</div>
-                        <div class="post-meta__time">${arrayElement.date}</div>
+                        <div class="post-meta__author">${autor.name}</div>
+                        <div class="post-meta__time">${date}</div>
                     </div>                    
                 </div>
             </div>
-            <div class="post__text">${arrayElement.postText}</div>
+            <div class="post__text">${postText}</div>
             <div class="post__image">
-                <img src="${arrayElement.imgPost}" alt="">
+                <img src="${imgPost}" alt="">
             </div>
             <div class="post__footer">
                 <div class="likes js-likes">
@@ -102,7 +109,7 @@ function createLayout (array, indexRef) {
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${arrayElement.likesCounter}</b> persone
+                        Piace a <b id="like-counter-1" class="js-likes-counter">${likesCounter}</b> persone
                     </div>
                 </div>
             </div>
